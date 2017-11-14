@@ -1,17 +1,16 @@
-import axios from 'axios'
+import axios from 'axios' 
+axios.defaults.headers.common['Authorization'] = 'auth-string';
+
 const api = 'http://localhost:3001';
 
-export const getPosts = () => {
-    return (dispatch) => {
-        dispatch(fetchInitialDataRequest())
-        return axios.get(`${c.API}/posts`)
-        .then((postsResponse) => {
-            const posts = postsResponse.data.filter(post => (post.deleted === false || parentIds.includes(post.id)))
-              .reduce((posts, post) => ({ ...posts, [post.id]: post }), {})
-            dispatch(posts)
-        })
-        .catch((postsError) => { 
-            dispatch(console.log(postsError)) 
-        })
-    }
+export const fetchPosts = (dispatch) => {
+  return (dispatch) => {
+    const request = axios.get(`${api}/posts`)
+    .then((postsResponse) => {
+      dispatch({ type: 'FETCH_POSTS', posts: postsResponse.data })
+    })
+    .catch((postsError) => { 
+      dispatch({ errors: postsError})
+    })
   }
+}

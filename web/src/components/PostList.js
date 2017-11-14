@@ -1,8 +1,18 @@
 import React, {Component} from 'react';
 import Rating from './Rating'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { fetchPosts } from '../actions/Posts'
 
 class PostList extends Component {
+    componentDidMount () {
+        this.props.dispatch(fetchPosts())
+    }
+
     render() {
+        const { posts } = this.props;
+
         return (
             <div className="row post">
                 <Rating />
@@ -20,4 +30,15 @@ class PostList extends Component {
     }
 }
 
-export default PostList;
+// PostList.propTypes = {
+//     posts: PropTypes.array.isRequired
+// };
+
+const mapStateToProps = state => ({ posts: state.posts });
+
+const mapDispatchToProps = (dispatch, fetchPosts) => ({
+    dispatch,
+    fetchPosts
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList);

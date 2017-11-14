@@ -8,9 +8,15 @@ export const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    return {
-        ...state
-      }
+    switch(action.type){
+        case 'FETCH_POSTS':
+            return {
+                ...state, 
+                posts: action.posts
+            }
+        default:
+            return state
+    }
 }
 
 export default reducer;
