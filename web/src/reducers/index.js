@@ -1,4 +1,5 @@
 // import { combineReducers } from 'redux'
+import * as types from '../types'
 
 export const initialState = {
     app: `readable`,
@@ -9,7 +10,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case 'FETCH_POSTS':
+        case types.FETCH_POSTS:
             return {
                 ...state, 
                 posts: action.posts

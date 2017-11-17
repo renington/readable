@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from '../logo.svg';
 import '../App.css';
 import CommentingO from 'react-icons/lib/fa/commenting-o'
 import HeartO from 'react-icons/lib/fa/heart-o'

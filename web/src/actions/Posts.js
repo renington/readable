@@ -1,3 +1,5 @@
+import * as types from '../types'
+
 import axios from 'axios' 
 axios.defaults.headers.common['Authorization'] = 'auth-string';
 
@@ -7,7 +9,7 @@ export const fetchPosts = (dispatch) => {
   return (dispatch) => {
     const request = axios.get(`${api}/posts`)
     .then((postsResponse) => {
-      dispatch({ type: 'FETCH_POSTS', posts: postsResponse.data })
+      dispatch({ type: types.FETCH_POSTS, posts: postsResponse.data })
     })
     .catch((postsError) => { 
       dispatch({ errors: postsError})
