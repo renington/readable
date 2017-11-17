@@ -5,6 +5,7 @@ export const initialState = {
     app: `readable`,
     user: `reningtonneri`,
     posts: [],
+    categories: [],
     errors: []
 }
 
@@ -14,6 +15,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, 
                 posts: action.posts
+            }
+        case types.FETCH_CATEGORIES:
+            return {
+                ...state,
+                categories: action.categories
             }
         default:
             return state

@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
+import { fetchCategories } from '../actions/Categories'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class CategoriesBar extends Component {
+    componentDidMount () {
+        this.props.dispatch(fetchCategories())
+    }
+
     render(){
+        const { categories } = this.props;
+
         return (
-            <div id="navbar" className="collapse navbar-collapse">
-                <ul className="nav navbar-nav">
-                    <li className="active"><a href="#">REACT</a></li>
-                    <li><a href="#about">REDUX</a></li>
-                    <li><a href="#contact">NATIVE</a></li>
-                </ul>
-            </div>
+                <div id="navbar" className="collapse navbar-collapse">
+                    <ul className="nav navbar-nav">
+                    {categories && categories.map( (category) => (
+                        <li key={category.path} className="">
+                            <Link to={`/${category.path}`} className='link'>{category.name}</Link>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
         )
     }
 }
 
-export default CategoriesBar;
+const mapStateToProps = state => ({ categories: state.categories });
+
+const mapDispatchToProps = (dispatch, fetchPosts) => ({
+    dispatch,
+    fetchCategories
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesBar);
