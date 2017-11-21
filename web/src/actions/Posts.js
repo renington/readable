@@ -16,7 +16,6 @@ export const fetchPosts = (dispatch) => {
 
 export const fetchPost = (postId, dispatch) => {
   return (dispatch) => {
-    console.log(`${types.API_HOST}/posts/${postId}`);
     axios.get(`${types.API_HOST}/posts/${postId}`)
     .then((postResponse) => {
       dispatch({type: types.FETCH_POST, post: postResponse.data})
@@ -26,3 +25,16 @@ export const fetchPost = (postId, dispatch) => {
     })
   }
 }
+
+export const fetchPostsByCategory = (category, dispatch) => {
+  return (dispatch) => {
+    axios.get(`${types.API_HOST}/${category}/posts`)
+    .then((postsResponse) => {
+      dispatch({type: types.FETCH_POSTS_BY_CATEGORY, posts: postsResponse.data})
+    })
+    .catch((postsError) => {
+      dispatch({ errors: postsError })
+    })
+  }
+}
+

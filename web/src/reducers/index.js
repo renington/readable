@@ -14,10 +14,11 @@ export const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type){
         case types.FETCH_POSTS:
+        case types.FETCH_POSTS_BY_CATEGORY:
             return {
                 ...state, 
                 posts: action.posts
-            }
+            }  
         case types.FETCH_CATEGORIES:
             return {
                 ...state,

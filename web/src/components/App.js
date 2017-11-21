@@ -8,7 +8,7 @@ class App extends Component {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
-                {/* <Route exact path='/:category/:postId' render={({match}) => <PostItem postId={match.params.postId}/>}/> */}
+                <Route exact path="/:category" component={Home} />
                 <Route exact path='/:category/:postId' component={PostPage} />
             </Switch>
         );
