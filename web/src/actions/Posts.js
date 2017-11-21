@@ -13,3 +13,16 @@ export const fetchPosts = (dispatch) => {
     })
   }
 }
+
+export const fetchPost = (postId, dispatch) => {
+  return (dispatch) => {
+    console.log(`${types.API_HOST}/posts/${postId}`);
+    axios.get(`${types.API_HOST}/posts/${postId}`)
+    .then((postResponse) => {
+      dispatch({type: types.FETCH_POST, post: postResponse.data})
+    })
+    .catch((postError) => {
+      dispatch({ errors: postError })
+    })
+  }
+}

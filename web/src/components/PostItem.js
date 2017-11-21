@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Rating from './Rating'
+import CommentList from './CommentList'
 
 class PostItem extends Component {
     render() {
@@ -15,8 +16,9 @@ class PostItem extends Component {
                         Post by <a href="#">{post.author}</a> ({post.category}) has <strong>{post.commentCount}</strong> comments.
                     </div>
                 </div>
+                <CommentList parentId={post.id} />
             </div>
-        );
+        )
     }
 }
 

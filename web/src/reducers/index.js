@@ -6,6 +6,8 @@ export const initialState = {
     user: `reningtonneri`,
     posts: [],
     categories: [],
+    post: [],
+    comments: [],
     errors: []
 }
 
@@ -20,6 +22,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 categories: action.categories
+            }
+        case types.FETCH_COMMENTS:
+            return {
+                ...state,
+                comments: action.comments
+            }
+        case types.FETCH_POST:
+            return {
+                ...state,
+                post: action.post
             }
         default:
             return state
