@@ -13,7 +13,7 @@ class CommentList extends Component {
     render() {
         return (
             <div className="row comments">
-                <div className="col-sm-offset-2 col-sm-10">
+                <div className="col-sm-offset-1 col-sm-11">
                     <h2>Title comment</h2>
                     <div className="content">Comments</div>
                     <div className="action">

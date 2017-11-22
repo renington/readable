@@ -27,10 +27,12 @@ body .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>
   /* border-top: solid 8px #fff; */
 }
 
+.comments .publish,
 .post .publish {
   border-bottom: 1px solid #eee;
 }
 
+.comments .content,
 .post .content {
   font-size: 16px;
   line-height: 22px;
@@ -42,16 +44,21 @@ body .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>
   text-align: right;
 }
 
+.comments .action,
 .post .action {
   color: #ccc;
   margin: 8px 0;
 }
-.post h2 {
+
+.post h2,
+.comments h2 {
   margin-top: 0;
   font-size: 20px;
 }
 
-
+.comments {
+  margin-top: 20px;
+}
 
 .footer {
   position: absolute;

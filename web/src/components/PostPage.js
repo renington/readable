@@ -6,6 +6,7 @@ import { fetchPost } from '../actions/Posts'
 import PostItem from './PostItem'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import CommentList from './CommentList'
 
 class PostPage extends Component {
     componentDidMount () {
@@ -34,7 +35,8 @@ class PostPage extends Component {
         if(post){
             return (
                 <div className="container">
-                    {<PostItem post={post} />}
+                    <PostItem post={post} />
+                    <CommentList parentId={post.id} />
                 </div>
             ) 
         }
