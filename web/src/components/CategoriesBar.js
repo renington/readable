@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { fetchCategories } from '../actions/Categories'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class CategoriesBar extends Component {
     componentDidMount () {
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch, fetchPosts) => ({
     fetchCategories
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoriesBar));

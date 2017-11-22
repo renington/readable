@@ -34,6 +34,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 post: action.post
             }
+        case types.CLEAR_POSTS:
+            return {
+                ...state,
+                posts: []
+            }
         default:
             return state
     }

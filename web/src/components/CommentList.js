@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { fetchComments } from '../actions/Comments'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class CommentList extends Component {
     componentDidMount() {
@@ -31,4 +32,4 @@ const mapDispatchToProps = (dispatch, fetchComments) => ({
     fetchComments
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentList));

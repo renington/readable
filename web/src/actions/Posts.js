@@ -38,3 +38,4 @@ export const fetchPostsByCategory = (category, dispatch) => {
   }
 }
 
+export const clearPosts = () => ({ type: types.CLEAR_POSTS });

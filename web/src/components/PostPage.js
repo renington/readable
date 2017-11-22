@@ -4,7 +4,8 @@ import HeartO from 'react-icons/lib/fa/heart-o'
 import Header from './Header'
 import { fetchPost } from '../actions/Posts'
 import PostItem from './PostItem'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class PostPage extends Component {
     componentDidMount () {
@@ -47,4 +48,4 @@ const mapDispatchToProps = (dispatch, fetchPost) => ({
     fetchPost
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostPage));
