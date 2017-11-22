@@ -12,15 +12,15 @@ class CategoriesBar extends Component {
         const { categories } = this.props;
 
         return (
-                <div id="navbar" className="collapse navbar-collapse">
-                    <ul className="nav navbar-nav">
-                    {categories && categories.map( (category) => (
-                        <li key={category.path} className="">
-                            <Link to={`/${category.path}`} className='link'>{category.name}</Link>
-                        </li>
-                    ))}
-                    </ul>
-                </div>
+            <div id="navbar" className="collapse navbar-collapse">
+                <ul className="nav navbar-nav">
+                {categories && categories.map( (category) => (
+                    <li key={category.path} className="">
+                        <Link to={`/${category.path}`} className='link'>{category.name}</Link>
+                    </li>
+                ))}
+                </ul>
+            </div>
         )
     }
 }

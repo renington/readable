@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { fetchComments } from '../actions/Comments'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import Rating from './Rating'
 
 class CommentList extends Component {
     componentDidMount() {
@@ -11,15 +12,19 @@ class CommentList extends Component {
     }
 
     render() {
+        const { comments } = this.props;
+        console.log(comments);
         return (
             <div className="row comments">
-                <div className="col-sm-offset-1 col-sm-11">
-                    <h2>Title comment</h2>
-                    <div className="content">Comments</div>
-                    <div className="action">
-                        Comment by <a href="#">author </a>
+                {comments && comments.map( (comment) => (
+                    <div className="row comment">
+                        <Rating rating={comment.voteScore} />
+                        <div className="col-sm-11" key={comment.id}>
+                            <div className="content">{comment.body}</div>
+                            <div className="action">Comment by <a href="#">{comment.author} </a></div>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         )
     }
