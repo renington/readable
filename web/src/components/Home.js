@@ -6,8 +6,18 @@ import Header from './Header'
 import { fetchPosts } from '../actions/Posts'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import NewPost from './NewPost'
 
 class Home extends Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            showFormNewPost: false
+        }
+    }
+    
+
     componentDidMount () {
         this.props.dispatch(fetchPosts())
     }
@@ -16,6 +26,8 @@ class Home extends Component {
         return (
             <div className="App">
                 <Header />
+
+                <NewPost showForm={this.state.showFormNewPost} changeShowForm={this.changeShowForm} />
 
                 <div className="container">
                     <PostList posts={this.props.posts} />
@@ -28,6 +40,12 @@ class Home extends Component {
                 </footer>
             </div>
         )
+    }
+
+    changeShowForm = () => {
+        this.setState({
+            showFormNewPost: !this.state.showFormNewPost
+        });
     }
 }
 
