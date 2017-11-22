@@ -14,13 +14,11 @@ class PostPage extends Component {
     }
     
     render() {
-        const { post } = this.props;
-
         return (
             <div className="App">
                 <Header />
 
-                {this.postItem(post)}
+                {this.postItem(this.props.post)}
 
                 <footer className="footer">
                     <div className="container">
@@ -36,14 +34,14 @@ class PostPage extends Component {
             return (
                 <div className="container">
                     <PostItem post={post} />
-                    <CommentList parentId={post.id} />
+                    <CommentList comments={this.props.comments} />
                 </div>
             ) 
         }
     }
 }
 
-const mapStateToProps = state => ({ post: state.post });
+const mapStateToProps = state => ({ post: state.post, comments: state.comments });
 
 const mapDispatchToProps = (dispatch, fetchPost) => ({
     dispatch,

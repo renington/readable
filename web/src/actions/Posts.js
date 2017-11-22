@@ -19,6 +19,14 @@ export const fetchPost = (postId, dispatch) => {
     axios.get(`${types.API_HOST}/posts/${postId}`)
     .then((postResponse) => {
       dispatch({type: types.FETCH_POST, post: postResponse.data})
+      
+      axios.get(`${types.API_HOST}/posts/${postId}/comments`)
+      .then((commentsResponse) => {
+        dispatch({ type: types.FETCH_COMMENTS, comments: commentsResponse.data, postId })
+      })
+      .catch((commentsError) => { 
+        dispatch({ errors: commentsError })
+      })
     })
     .catch((postError) => {
       dispatch({ errors: postError })

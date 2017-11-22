@@ -16,7 +16,7 @@ class PostItem extends Component {
                     </Link>
                     <div className="content">{post.body}</div>
                     <div className="action">
-                        Post by <a href="#">{post.author}</a> ({post.category}) has <strong>{post.commentCount}</strong> comments.
+                        Post by <a href="">{post.author}</a> ({post.category}) has <strong>{post.commentCount}</strong> comments.
                     </div>
                 </div>
                 

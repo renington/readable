@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 //import { bindActionCreators } from 'redux'
 import PostItem from './PostItem'
 import {withRouter} from 'react-router-dom'

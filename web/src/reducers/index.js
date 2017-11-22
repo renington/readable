@@ -32,7 +32,8 @@ const reducer = (state = initialState, action) => {
         case types.FETCH_POST:
             return {
                 ...state,
-                post: action.post
+                post: action.post,
+                comments: []
             }
         case types.CLEAR_POSTS:
             return {
