@@ -16,7 +16,6 @@ class Home extends Component {
             showFormNewPost: false
         }
     }
-    
 
     componentDidMount () {
         this.props.dispatch(fetchPosts())
@@ -29,9 +28,7 @@ class Home extends Component {
 
                 <NewPost showForm={this.state.showFormNewPost} changeShowForm={this.changeShowForm} />
 
-                <div className="container">
-                    <PostList posts={this.props.posts} />
-                </div>
+                {this.getPost(this.props.posts)}
 
                 <footer className="footer">
                     <div className="container">
@@ -40,6 +37,16 @@ class Home extends Component {
                 </footer>
             </div>
         )
+    }
+
+    getPost = (posts) => {
+        if(posts){
+            return (
+                <div className="container">
+                    <PostList posts={posts} />
+                </div>
+                )
+        }
     }
 
     changeShowForm = () => {

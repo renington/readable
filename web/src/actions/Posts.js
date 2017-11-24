@@ -50,7 +50,7 @@ export const createPost = (post, dispatch) => {
   return (dispatch) => {
     axios.post(`${types.API_HOST}/posts/`, post)
     .then((postResponse) => { 
-      dispatch({ type: types.CREATE_POST, post: postResponse }) 
+      dispatch({ type: types.CREATE_POST, post: post }) 
     })
     .catch((postsError) => { 
       dispatch({ errors: postsError })

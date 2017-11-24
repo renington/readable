@@ -38,10 +38,12 @@ class NewPost extends Component {
             timestamp,
             voteScore: 0,
             commentCount: 0,
-            deleted: false
+            deleted: false,
+            totalPosts: this.props.posts.length
           }
 
           this.props.dispatch(createPost(post))
+          this.props.changeShowForm()
         }
       }
 
@@ -64,7 +66,7 @@ class NewPost extends Component {
                             <label htmlFor="title">Category</label>
                             <input type="text" className="form-control" id="title" value={category} onChange={this.handleCategoryChange} placeholder="Type React, Redux or Udacity" />
                         </div>
-                        <button type="submit" className="btn btn-success" onClick={this.submitNewPost}>SAVE</button> 
+                        <button type="button" className="btn btn-success" onClick={this.submitNewPost}>SAVE</button> 
                         <button type="button" className="btn btn-default pull-right" onClick={this.props.changeShowForm}>CANCEL</button>
                     </form>
                 </div>
@@ -81,7 +83,7 @@ class NewPost extends Component {
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({ posts: state.posts });
 
 const mapDispatchToProps = (dispatch, createPost) => ({
     dispatch,

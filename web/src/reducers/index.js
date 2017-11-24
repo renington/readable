@@ -43,10 +43,7 @@ const reducer = (state = initialState, action) => {
         case types.CREATE_POST:
             return {
                 ...state,
-                posts: {
-                  ...state.posts,
-                  [action.post.id]: action.post
-                }
+                posts: state.posts.concat(action.post)
             }
         default:
             return state
