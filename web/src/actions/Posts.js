@@ -46,14 +46,14 @@ export const fetchPostsByCategory = (category, dispatch) => {
   }
 }
 
-export const createPost = (post) => {
+export const createPost = (post, dispatch) => {
   return (dispatch) => {
     axios.post(`${types.API_HOST}/posts/`, post)
     .then((postResponse) => { 
       dispatch({ type: types.CREATE_POST, post: postResponse }) 
     })
     .catch((postsError) => { 
-      dispatch({ errors: postsError }) 
+      dispatch({ errors: postsError })
     })
   }
 }

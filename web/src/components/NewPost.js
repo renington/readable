@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { v1 as uuid } from 'uuid'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import {createPost} from '../actions/Posts'
 
 class NewPost extends Component {
     constructor(props) {
@@ -35,12 +36,13 @@ class NewPost extends Component {
             author,
             category,
             timestamp,
+            voteScore: 0,
+            commentCount: 0,
             deleted: false
           }
-          this.props.createPost(post)
-        }
 
-        e.preventDefault()
+          this.props.dispatch(createPost(post))
+        }
       }
 
     render() {
