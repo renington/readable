@@ -40,6 +40,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 posts: []
             }
+        case types.CREATE_POST:
+            return {
+                ...state,
+                posts: {
+                  ...state.posts,
+                  [action.post.id]: action.post
+                }
+            }
         default:
             return state
     }
