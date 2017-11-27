@@ -24,12 +24,13 @@ class NewComment extends Component {
                 timestamp: Date.now(),
                 body,
                 author,
-                voteScore: 0,
+                voteScore: 1,
                 deleted: false,
                 parentDeleted: false,
             }
 
             this.props.dispatch(createComment(comment))
+            this.setState({ body: '' })
         }
     }
 

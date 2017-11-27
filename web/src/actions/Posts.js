@@ -70,4 +70,16 @@ export const deletePost = (post, dispatch) => {
   }
 }
 
+export const votePost = (id, optionSelected) => {
+  return (dispatch) => {
+    axios.post(`${types.API_HOST}/posts/${id}`, {option: optionSelected})
+    .then((response) => { 
+      dispatch({ type: types.VOTE_POST, post: response.data }) 
+    })
+    .catch((error) => { 
+      dispatch({ errors: error })
+    })
+  }
+}
+
 export const clearPosts = () => ({ type: types.CLEAR_POSTS });

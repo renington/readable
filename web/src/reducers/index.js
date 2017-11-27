@@ -57,6 +57,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 posts: postsTemp
             }
+        case types.VOTE_POST:
+            // action.post.voteScore = action.post.voteScore + 1;
+            var postsTemp = state.posts.map(function(post){return (post.id == action.post.id) ? action.post : post})
+
+            return {
+                ...state,
+                posts: postsTemp,
+                post: action.post
+            }
         default:
             return state
     }

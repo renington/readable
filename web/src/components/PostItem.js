@@ -3,8 +3,13 @@ import Rating from './Rating'
 import { deletePost } from '../actions/Posts'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 class PostItem extends Component {
+    static propTypes = {
+        post: PropTypes.array.isRequired
+    };
+
     handleDelete = (e) => { 
         this.props.post.deleted = true;
         this.props.dispatch(deletePost(this.props.post))
@@ -15,7 +20,7 @@ class PostItem extends Component {
 
         return (
             <div className="row post">
-                <Rating rating={post.voteScore} />
+                <Rating post={post} />
                 <div className="col-sm-11 publish">
                     <Link to={`/${post.category}/${post.id}`} className='link'>
                         <h2>{post.title}</h2>
@@ -30,10 +35,6 @@ class PostItem extends Component {
         )
     }
 }
-
-// PostList.propTypes = {
-//     posts: PropTypes.array.isRequired
-// };
 
 const mapStateToProps = state => ({});
 
