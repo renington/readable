@@ -13,3 +13,15 @@ export const fetchComments = (parentId,dispatch) => {
     })
   }
 }
+
+export const createPost = (comment, dispatch) => {
+  return (dispatch) => {
+    axios.post(`${c.API}/comments/`, comment)
+    .then((response) => { 
+      dispatch({ type: types.CREATE_COMMENT, post: comment }) 
+    })
+    .catch((error) => { 
+      dispatch({ errors: error })
+    })
+  }
+}
