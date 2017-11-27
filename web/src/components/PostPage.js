@@ -7,6 +7,7 @@ import PostItem from './PostItem'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import CommentList from './CommentList'
+import NewComment from './NewComment'
 
 class PostPage extends Component {
     componentDidMount () {
@@ -35,6 +36,7 @@ class PostPage extends Component {
                 <div className="container">
                     <PostItem post={post} />
                     <CommentList comments={this.props.comments} />
+                    <NewComment parentId={post.id} />
                 </div>
             ) 
         }

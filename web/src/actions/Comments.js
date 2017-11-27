@@ -14,11 +14,11 @@ export const fetchComments = (parentId,dispatch) => {
   }
 }
 
-export const createPost = (comment, dispatch) => {
+export const createComment = (comment, dispatch) => {
   return (dispatch) => {
-    axios.post(`${c.API}/comments/`, comment)
+    axios.post(`${types.API_HOST}/comments/`, comment)
     .then((response) => { 
-      dispatch({ type: types.CREATE_COMMENT, post: comment }) 
+      dispatch({ type: types.CREATE_COMMENT, comment: comment }) 
     })
     .catch((error) => { 
       dispatch({ errors: error })
