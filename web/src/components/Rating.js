@@ -8,6 +8,10 @@ class Rating extends Component {
     handleIncreaseVote = (e) => {
         this.props.dispatch(votePost(this.props.post.id, 'upVote'))
     }
+
+    handleDecreaseVote = (e) => {
+        this.props.dispatch(votePost(this.props.post.id, 'downVote'))
+    }
     
     render(){
         const { post } = this.props;
@@ -25,7 +29,7 @@ class Rating extends Component {
                 <div>
                     <div className="rating-up"><ChevUp size={20} onClick={this.handleIncreaseVote.bind(this)} /></div>
                     <div className="rating-value">{post.voteScore}</div>
-                    <div className="rating-down"><ChevDown  size={20}/></div>
+                    <div className="rating-down"><ChevDown  size={20} onClick={this.handleDecreaseVote.bind(this)} /></div>
                 </div>
             )
         }
