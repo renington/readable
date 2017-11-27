@@ -11,11 +11,19 @@ class PostList extends Component {
         
         return (
             <div className="post-list">
-                {posts.length > 0 && posts.map((post) => (
-                    <PostItem key={post.id} post={post} />
-                ))}
+                {this.getPosts(posts)}
             </div>
-        );
+        )
+    }
+
+    getPosts = (posts) => {
+        if(posts){
+            return (
+                posts && posts.map((post) => (
+                    <PostItem key={post.id} post={post} />
+                ))
+            )
+        }
     }
 }
 
