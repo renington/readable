@@ -43,7 +43,7 @@ class Home extends Component {
         if(posts){
             return (
                 <div className="container">
-                    <PostList posts={posts} />
+                    <PostList posts={posts.filter(post => post.deleted !== true )} />
                 </div>
                 )
         }

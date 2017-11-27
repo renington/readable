@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import Rating from './Rating'
-
+import { deletePost } from '../actions/Posts'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class PostItem extends Component {
+    handleDelete = (e) => { 
+        this.props.post.deleted = true;
+        this.props.dispatch(deletePost(this.props.post))
+    }
+
     render() {
         const { post } = this.props;
 
@@ -16,7 +22,7 @@ class PostItem extends Component {
                     </Link>
                     <div className="content">{post.body}</div>
                     <div className="action">
-                        Post by <a href="">{post.author}</a> ({post.category}) has <strong>{post.commentCount}</strong> comments.
+                        Post by <a href="">{post.author}</a> ({post.category}) has <strong>{post.commentCount}</strong> comments. | Edit | <a onClick={() => { this.handleDelete(post) }}> delete </a>
                     </div>
                 </div>
                 
@@ -29,4 +35,11 @@ class PostItem extends Component {
 //     posts: PropTypes.array.isRequired
 // };
 
-export default PostItem;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = (dispatch, deletePost) => ({
+    dispatch,
+    deletePost
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostItem);

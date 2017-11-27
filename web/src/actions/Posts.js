@@ -52,8 +52,20 @@ export const createPost = (post, dispatch) => {
     .then((postResponse) => { 
       dispatch({ type: types.CREATE_POST, post: post }) 
     })
-    .catch((postsError) => { 
-      dispatch({ errors: postsError })
+    .catch((postError) => { 
+      dispatch({ errors: postError })
+    })
+  }
+}
+
+export const deletePost = (post, dispatch) => {
+  return (dispatch) => {
+    axios.delete(`${types.API_HOST}/posts/${post.id}`)
+    .then((postResponse) => { 
+      dispatch({ type: types.DELETE_POST, post: post }) 
+    })
+    .catch((postError) => { 
+      dispatch({ errors: postError })
     })
   }
 }
