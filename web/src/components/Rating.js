@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 const Rating = ({ item, type, dispatch }) => {
     const handleIncreaseVote = (e) => {
-        if(type == 'post'){
+        if(type === 'post'){
             dispatch(votePost(item.id, 'upVote'))
         }else{
             dispatch(voteComment(item.id, 'upVote'))
@@ -15,7 +15,7 @@ const Rating = ({ item, type, dispatch }) => {
     }
 
     const handleDecreaseVote = (e) => {
-        if(type == 'post'){
+        if(type === 'post'){
             dispatch(votePost(item.id, 'downVote'))
         }else{
             dispatch(voteComment(item.id, 'downVote'))

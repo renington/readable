@@ -37,7 +37,7 @@ class Home extends Component {
             <div className="App">
                 <Header />
                 <NewPost showForm={this.state.showFormNewPost} changeShowForm={this.changeShowForm} />
-                {this.getPost(this.props.posts)}
+                {this.getPost(posts)}
             </div>
         )
     }
