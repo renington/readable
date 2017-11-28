@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import Rating from './Rating'
 import { deletePost } from '../actions/Posts'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import EditPost from './EditPost'
-import TimeAgo from 'react-timeago';
+import TimeAgo from 'react-timeago'
 
 class PostItem extends Component {
     constructor(props){

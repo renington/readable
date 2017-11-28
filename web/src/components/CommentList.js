@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-// import PropTypes from 'prop-types'
 import Rating from './Rating'
+import TimeAgo from 'react-timeago'
+// import PropTypes from 'prop-types'
 
 class CommentList extends Component {
     render() {
@@ -13,7 +14,7 @@ class CommentList extends Component {
                         <Rating item={comment} type={"comment"} dispatch={this.props.dispatch} />
                         <div className="col-sm-11" key={comment.id}>
                             <div className="content">{comment.body}</div>
-                            <div className="action">Comment by <a href="">{comment.author} </a></div>
+                            <div className="action">Comment by <a href="">{comment.author} </a> - {<TimeAgo date={comment.timestamp} />}</div>
                         </div>
                     </div>
                 ))}
