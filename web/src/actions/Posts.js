@@ -70,14 +70,15 @@ export const deletePost = (post, dispatch) => {
   }
 }
 
-export const votePost = (id, optionSelected) => {
+export const votePost = (id, optionSelected, dispatch) => {
   return (dispatch) => {
     axios.post(`${types.API_HOST}/posts/${id}`, {option: optionSelected})
     .then((response) => { 
       dispatch({ type: types.VOTE_POST, post: response.data }) 
     })
     .catch((error) => { 
-      dispatch({ errors: error })
+      console.log(error)
+      // dispatch({ errors: error })
     })
   }
 }

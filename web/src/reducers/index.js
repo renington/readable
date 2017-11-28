@@ -51,19 +51,14 @@ const reducer = (state = initialState, action) => {
                 posts: state.posts.concat(action.post)
             }
         case types.DELETE_POST:
-            var postsTemp = state.posts.map(function(post){return (post.id == action.post.id) ? action.post : post})
-
             return {
                 ...state,
-                posts: postsTemp
+                posts: state.posts && state.posts.map(function(post){return (post.id === action.post.id) ? action.post : post})
             }
         case types.VOTE_POST:
-            // action.post.voteScore = action.post.voteScore + 1;
-            var postsTemp = state.posts.map(function(post){return (post.id == action.post.id) ? action.post : post})
-
             return {
                 ...state,
-                posts: postsTemp,
+                posts: state.posts && state.posts.map(function(post){return (post.id === action.post.id) ? action.post : post}),
                 post: action.post
             }
         default:

@@ -1,46 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ChevUp from 'react-icons/lib/fa/chevron-up'
 import ChevDown from 'react-icons/lib/fa/chevron-down'
 import { votePost } from '../actions/Posts'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-class Rating extends Component {
-    handleIncreaseVote = (e) => {
-        this.props.dispatch(votePost(this.props.post.id, 'upVote'))
+const Rating = ({ post, dispatch }) => {
+    const handleIncreaseVote = (e) => {
+        dispatch(votePost(post.id, 'upVote'))
     }
 
-    handleDecreaseVote = (e) => {
-        this.props.dispatch(votePost(this.props.post.id, 'downVote'))
-    }
-    
-    render(){
-        const { post } = this.props;
-
-        return (
-            <div className="col-sm-1 vote">
-                {this.getPost(post)}
-            </div>
-        )
+    const handleDecreaseVote = (e) => {
+        dispatch(votePost(post.id, 'downVote'))
     }
 
-    getPost = (post) => {
+    const getPost = (post) => {
         if(post){
             return (
                 <div>
-                    <div className="rating-up"><ChevUp size={20} onClick={this.handleIncreaseVote.bind(this)} /></div>
+                    <div className="rating-up"><ChevUp size={20} onClick={handleIncreaseVote} /></div>
                     <div className="rating-value">{post.voteScore}</div>
-                    <div className="rating-down"><ChevDown  size={20} onClick={this.handleDecreaseVote.bind(this)} /></div>
+                    <div className="rating-down"><ChevDown  size={20} onClick={handleDecreaseVote} /></div>
                 </div>
             )
         }
     }
+
+    return (
+        <div className="col-sm-1 vote">
+            {getPost(post)}
+        </div>
+    )
 }
 
-const mapStateToProps = state => ({});
+Rating.PropTypes = {
+    post: PropTypes.object.isRequired
+}
 
-const mapDispatchToProps = (dispatch, votePost) => ({
-    dispatch,
-    votePost
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Rating);
+export default Rating;

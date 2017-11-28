@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 class PostItem extends Component {
     static propTypes = {
-        post: PropTypes.array.isRequired
+        post: PropTypes.object.isRequired
     };
 
     handleDelete = (e) => { 
@@ -20,7 +20,7 @@ class PostItem extends Component {
 
         return (
             <div className="row post">
-                <Rating post={post} />
+                <Rating post={post} dispatch={this.props.dispatch} />
                 <div className="col-sm-11 publish">
                     <Link to={`/${post.category}/${post.id}`} className='link'>
                         <h2>{post.title}</h2>
