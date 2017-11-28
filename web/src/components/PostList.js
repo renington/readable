@@ -10,7 +10,7 @@ class PostList extends Component {
         const { posts } = this.props;
         
         return (
-            <div className="post-list">
+            <div className="container post-list">
                 {this.getPosts(posts)}
             </div>
         )

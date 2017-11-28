@@ -28,14 +28,7 @@ class Home extends Component {
         return (
             <div className="App">
                 <Header />
-                <div className="container">
-                    <PostList posts={posts} />
-                </div>
-                <footer className="footer">
-                    <div className="container">
-                        <p className="text-muted">Built with <HeartO /></p>
-                    </div>
-                </footer>
+                <PostList posts={posts} />
             </div>
         )
     }

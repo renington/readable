@@ -16,12 +16,4 @@ const mapStateToProps = state => {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-  
-// }
-
-const VisiblePostList = connect(
-  mapStateToProps
-)(PostList)
-
 export default VisiblePostList

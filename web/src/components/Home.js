@@ -25,16 +25,8 @@ class Home extends Component {
         return (
             <div className="App">
                 <Header />
-
                 <NewPost showForm={this.state.showFormNewPost} changeShowForm={this.changeShowForm} />
-
                 {this.getPost(this.props.posts)}
-
-                <footer className="footer">
-                    <div className="container">
-                        <p className="text-muted">Built with <HeartO /></p>
-                    </div>
-                </footer>
             </div>
         )
     }
@@ -42,9 +34,7 @@ class Home extends Component {
     getPost = (posts) => {
         if(posts){
             return (
-                <div className="container">
-                    <PostList posts={posts.filter(post => post.deleted !== true )} />
-                </div>
+                <PostList posts={posts.filter(post => post.deleted !== true )} />
             )
         }
     }
