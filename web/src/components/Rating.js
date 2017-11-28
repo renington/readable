@@ -2,23 +2,32 @@ import React from 'react'
 import ChevUp from 'react-icons/lib/fa/chevron-up'
 import ChevDown from 'react-icons/lib/fa/chevron-down'
 import { votePost } from '../actions/Posts'
+import { voteComment } from '../actions/Comments'
 import PropTypes from 'prop-types'
 
-const Rating = ({ post, dispatch }) => {
+const Rating = ({ item, type, dispatch }) => {
     const handleIncreaseVote = (e) => {
-        dispatch(votePost(post.id, 'upVote'))
+        if(type == 'post'){
+            dispatch(votePost(item.id, 'upVote'))
+        }else{
+            dispatch(voteComment(item.id, 'upVote'))
+        }
     }
 
     const handleDecreaseVote = (e) => {
-        dispatch(votePost(post.id, 'downVote'))
+        if(type == 'post'){
+            dispatch(votePost(item.id, 'downVote'))
+        }else{
+            dispatch(voteComment(item.id, 'downVote'))
+        }
     }
 
-    const getPost = (post) => {
-        if(post){
+    const getItem = (item) => {
+        if(item){
             return (
                 <div>
                     <div className="rating-up"><ChevUp size={20} onClick={handleIncreaseVote} /></div>
-                    <div className="rating-value">{post.voteScore}</div>
+                    <div className="rating-value">{item.voteScore}</div>
                     <div className="rating-down"><ChevDown  size={20} onClick={handleDecreaseVote} /></div>
                 </div>
             )
@@ -27,13 +36,14 @@ const Rating = ({ post, dispatch }) => {
 
     return (
         <div className="col-sm-1 vote">
-            {getPost(post)}
+            {getItem(item)}
         </div>
     )
 }
 
 Rating.PropTypes = {
-    post: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    type: PropTypes.string.isRequired
 }
 
 export default Rating;

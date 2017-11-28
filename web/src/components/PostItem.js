@@ -39,7 +39,7 @@ class PostItem extends Component {
         if(!this.state.editMode){
             return (
                 <div className="row post">
-                    <Rating post={post} dispatch={this.props.dispatch} />
+                    <Rating item={post} type={"post"} dispatch={this.props.dispatch} />
                     <div className="col-sm-11 publish">
                         <Link to={`/${post.category}/${post.id}`} className='link'>
                             <h2>{post.title}</h2>

@@ -25,3 +25,15 @@ export const createComment = (comment, dispatch) => {
     })
   }
 }
+
+export const voteComment = (id, optionSelected, dispatch) => {
+  return (dispatch) => {
+    axios.post(`${types.API_HOST}/comments/${id}`, {option: optionSelected})
+    .then((response) => { 
+      dispatch({ type: types.VOTE_COMMENT, comment: response.data }) 
+    })
+    .catch((error) => { 
+      dispatch({ errors: error })
+    })
+  }
+}

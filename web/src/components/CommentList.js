@@ -10,7 +10,7 @@ class CommentList extends Component {
             <div className="row comments">
                 {comments && comments.map( (comment) => (
                     <div key={comment.id} className="row comment">
-                        <Rating rating={comment.voteScore} />
+                        <Rating item={comment} type={"comment"} dispatch={this.props.dispatch} />
                         <div className="col-sm-11" key={comment.id}>
                             <div className="content">{comment.body}</div>
                             <div className="action">Comment by <a href="">{comment.author} </a></div>
