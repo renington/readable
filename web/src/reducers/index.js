@@ -50,6 +50,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 posts: state.posts.concat(action.post)
             }
+        case types.EDIT_POST:
+            return {
+                ...state,
+                posts: state.posts && state.posts.map(function(post){return (post.id === action.post.id) ? action.post : post})
+            }
         case types.DELETE_POST:
             return {
                 ...state,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../App.css';
-import HeartO from 'react-icons/lib/fa/heart-o'
 import Header from './Header'
 import { fetchPost } from '../actions/Posts'
 import PostItem from './PostItem'
@@ -18,14 +17,7 @@ class PostPage extends Component {
         return (
             <div className="App">
                 <Header />
-
                 {this.postItem(this.props.post)}
-
-                <footer className="footer">
-                    <div className="container">
-                        <p className="text-muted">Built with <HeartO /></p>
-                    </div>
-                </footer>
             </div>
         )
     }

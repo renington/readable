@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css';
 import PostList from './PostList'
-import HeartO from 'react-icons/lib/fa/heart-o'
 import Header from './Header'
 import { fetchPostsByCategory, clearPosts } from '../actions/Posts'
 import { connect } from 'react-redux'

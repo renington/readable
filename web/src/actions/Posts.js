@@ -77,8 +77,19 @@ export const votePost = (id, optionSelected, dispatch) => {
       dispatch({ type: types.VOTE_POST, post: response.data }) 
     })
     .catch((error) => { 
-      console.log(error)
-      // dispatch({ errors: error })
+      dispatch({ errors: error })
+    })
+  }
+}
+
+export const editPost = (post, dispatch) => {
+  return (dispatch) => {
+    axios.put(`${types.API_HOST}/posts/${post.id}`, {title: post.title, body: post.body})
+    .then((response) => { 
+      dispatch({ type: types.EDIT_POST, post: response.data }) 
+    })
+    .catch((error) => { 
+      dispatch({ errors: error })
     })
   }
 }

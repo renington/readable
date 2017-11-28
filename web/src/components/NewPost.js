@@ -45,7 +45,7 @@ class NewPost extends Component {
           this.props.dispatch(createPost(post))
           this.props.changeShowForm()
         }
-      }
+    }
 
     render() {
         const { title, body, category } = this.state
