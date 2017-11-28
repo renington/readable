@@ -36,7 +36,7 @@ class NewPost extends Component {
             author,
             category,
             timestamp,
-            voteScore: 0,
+            voteScore: 1,
             commentCount: 0,
             deleted: false,
             totalPosts: this.props.posts.length

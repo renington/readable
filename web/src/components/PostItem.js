@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import EditPost from './EditPost'
+import TimeAgo from 'react-timeago';
 
 class PostItem extends Component {
     constructor(props){
@@ -45,7 +46,7 @@ class PostItem extends Component {
                         </Link>
                         <div className="content">{post.body}</div>
                         <div className="action">
-                            Post by <a href="">{post.author}</a> ({post.category}) has <strong>{post.commentCount}</strong> comments. | <a onClick={() => { this.handleEdit(post) }}> edit </a> | <a onClick={() => { this.handleDelete(post) }}> delete </a>
+                            Post by <a href="">{post.author}</a> ({post.category}) - {<TimeAgo date={post.timestamp} />} - has <strong>{post.commentCount}</strong> comments. | <a onClick={() => { this.handleEdit(post) }}> edit </a> | <a onClick={() => { this.handleDelete(post) }}> delete </a>
                         </div>
                     </div>
                 </div>

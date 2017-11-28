@@ -5,8 +5,17 @@ import Header from './Header'
 import { fetchPostsByCategory, clearPosts } from '../actions/Posts'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import NewPost from './NewPost'
 
 class Home extends Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            showFormNewPost: false
+        }
+    }
+    
     componentDidMount () {
         this.props.dispatch(fetchPostsByCategory(this.props.match.params.category))
     }
@@ -27,9 +36,24 @@ class Home extends Component {
         return (
             <div className="App">
                 <Header />
-                <PostList posts={posts} />
+                <NewPost showForm={this.state.showFormNewPost} changeShowForm={this.changeShowForm} />
+                {this.getPost(this.props.posts)}
             </div>
         )
+    }
+
+    getPost = (posts) => {
+        if(posts){
+            return (
+                <PostList posts={posts.filter(post => post.deleted !== true )} />
+            )
+        }
+    }
+
+    changeShowForm = () => {
+        this.setState({
+            showFormNewPost: !this.state.showFormNewPost
+        });
     }
 }
 
