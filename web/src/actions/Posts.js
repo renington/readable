@@ -24,12 +24,12 @@ export const fetchPost = (postId, dispatch) => {
       .then((commentsResponse) => {
         dispatch({ type: types.FETCH_COMMENTS, comments: commentsResponse.data, postId })
       })
-      .catch((commentsError) => { 
-        dispatch({ errors: commentsError })
+      .catch((error) => { 
+        dispatch({ errors: error })
       })
     })
-    .catch((postError) => {
-      dispatch({ errors: postError })
+    .catch((error) => {
+      dispatch({ errors: error })
     })
   }
 }
@@ -37,11 +37,11 @@ export const fetchPost = (postId, dispatch) => {
 export const fetchPostsByCategory = (category, dispatch) => {
   return (dispatch) => {
     axios.get(`${types.API_HOST}/${category}/posts`)
-    .then((postsResponse) => {
-      dispatch({ type: types.FETCH_POSTS_BY_CATEGORY, posts: postsResponse.data })
+    .then((response) => {
+      dispatch({ type: types.FETCH_POSTS_BY_CATEGORY, posts: response.data })
     })
-    .catch((postsError) => {
-      dispatch({ errors: postsError })
+    .catch((error) => {
+      dispatch({ errors: error })
     })
   }
 }
