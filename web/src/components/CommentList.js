@@ -1,19 +1,12 @@
 import React from 'react'
-import Rating from './Rating'
-import TimeAgo from 'react-timeago'
 import PropTypes from 'prop-types'
+import CommentItem from './CommentItem'
 
 const CommentList = ({ comments, dispatch }) => {
     return (
         <div className="row comments">
             {comments && comments.map( (comment) => (
-                <div key={comment.id} className="row comment">
-                    <Rating item={comment} type={"comment"} dispatch={dispatch} />
-                    <div className="col-sm-11" key={comment.id}>
-                        <div className="content">{comment.body}</div>
-                        <div className="action">Comment by <a href="">{comment.author} </a> - {<TimeAgo date={comment.timestamp} />}</div>
-                    </div>
-                </div>
+                <CommentItem comment={comment} dispatch={dispatch} />
             ))}
         </div>
     )
