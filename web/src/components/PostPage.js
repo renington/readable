@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import CommentList from './CommentList'
 import NewComment from './NewComment'
+import { SortBy } from '../helpers/util'
 
 class PostPage extends Component {
     componentDidMount () {
@@ -27,7 +28,7 @@ class PostPage extends Component {
             return (
                 <div className="container">
                     <PostItem post={post} />
-                    <CommentList comments={this.props.comments.filter(comment => comment.deleted !== true )} dispatch={this.props.dispatch} />
+                    <CommentList comments={SortBy(this.props.comments.filter(comment => comment.deleted !== true ))} dispatch={this.props.dispatch} />
                     <NewComment parentId={post.id} />
                 </div>
             ) 
