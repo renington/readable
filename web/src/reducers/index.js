@@ -8,7 +8,8 @@ export const initialState = {
     categories: [],
     post: [],
     comments: [],
-    errors: []
+    errors: [],
+    OrderBy: 'vote'
 }
 
 const reducer = (state = initialState, action) => {
@@ -80,6 +81,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 posts: state.posts && state.posts.map(function(post){return (post.id === action.post.id) ? action.post : post}),
                 post: action.post
+            }
+        case types.ORDER_BY_VOTE:
+            return {
+                ...state,
+                OrderBy: 'vote'
+            }
+        case types.ORDER_BY_DATE:
+            return {
+                ...state,
+                OrderBy: 'timestamp'
             }
         default:
             return state

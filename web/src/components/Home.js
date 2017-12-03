@@ -6,6 +6,8 @@ import { fetchPosts } from '../actions/Posts'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import NewPost from './NewPost'
+import SortBar from './SortBar'
+import { SortBy } from '../helpers/util'
 
 class Home extends Component {
     constructor (props) {
@@ -24,6 +26,7 @@ class Home extends Component {
         return (
             <div className="App">
                 <Header />
+                <SortBar />
                 <NewPost showForm={this.state.showFormNewPost} changeShowForm={this.changeShowForm} />
                 {this.getPost(this.props.posts)}
             </div>
@@ -32,9 +35,7 @@ class Home extends Component {
 
     getPost = (posts) => {
         if(posts){
-            return (
-                <PostList posts={posts.filter(post => post.deleted !== true )} />
-            )
+            return <PostList posts={SortBy(posts.filter(post => post.deleted !== true ), this.props.OrderBy)} />
         }
     }
 
@@ -45,7 +46,10 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = state => ({ posts: state.posts });
+const mapStateToProps = state => ({ 
+    posts: state.posts,
+    OrderBy: state.OrderBy
+});
 
 const mapDispatchToProps = (dispatch, fetchPosts) => ({
     dispatch,

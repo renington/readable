@@ -95,3 +95,6 @@ export const editPost = (post, dispatch) => {
 }
 
 export const clearPosts = () => ({ type: types.CLEAR_POSTS });
+
+export const OrderByVote = () => ({ type: types.ORDER_BY_VOTE })
+export const OrderByDate = () => ({ type: types.ORDER_BY_DATE })

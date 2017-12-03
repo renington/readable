@@ -17,3 +17,6 @@ export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const CLEAR_COMMENTS = 'CLEAR_COMMENTS'
 export const VOTE_COMMENT = 'VOTE_COMMENT'
+
+export const ORDER_BY_VOTE = 'ORDER_BY_VOTE'
+export const ORDER_BY_DATE = 'ORDER_BY_DATE'
