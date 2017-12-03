@@ -6,7 +6,7 @@ const CommentList = ({ comments, dispatch }) => {
     return (
         <div className="row comments">
             {comments && comments.map( (comment) => (
-                <CommentItem comment={comment} dispatch={dispatch} />
+                <CommentItem key={comment.id} comment={comment} dispatch={dispatch} />
             ))}
         </div>
     )
