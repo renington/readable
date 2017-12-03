@@ -52,9 +52,7 @@ class PostItem extends Component {
                 </div>
             )
         }else{
-            return (
-                <EditPost post={post} changeHideEditForm={this.changeHideEditForm}  />
-            )
+            return <EditPost post={post} changeHideEditForm={this.changeHideEditForm}  />
         }
     }
 }

@@ -26,6 +26,18 @@ export const createComment = (comment, dispatch) => {
   }
 }
 
+export const editComment = (comment, dispatch) => {
+  return (dispatch) => {
+    axios.put(`${types.API_HOST}/comments/${comment.id}`, { body: comment.body})
+    .then((response) => { 
+      dispatch({ type: types.EDIT_COMMENT, comment: response.data }) 
+    })
+    .catch((error) => { 
+      dispatch({ errors: error })
+    })
+  }
+}
+
 export const deleteComment = (comment, dispatch) => {
   return (dispatch) => {
     axios.delete(`${types.API_HOST}/comments/${comment.id}`)

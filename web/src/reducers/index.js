@@ -34,6 +34,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 comments: state.comments.concat(action.comment)
             }
+        case types.EDIT_COMMENT:
+            return {
+                ...state,
+                comments: state.comments && state.comments.map(function(comment){return (comment.id === action.comment.id) ? action.comment : comment})
+            }
         case types.DELETE_COMMENT:
             return {
                 ...state,
