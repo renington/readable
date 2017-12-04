@@ -1,21 +1,11 @@
-import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
-import PostItem from './PostItem'
-import {withRouter} from 'react-router-dom'
+import React from 'react';
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import PostItem from './PostItem'
+import PropTypes from 'prop-types';
 
-class PostList extends Component {
-    render() {
-        const { posts } = this.props;
-        
-        return (
-            <div className="container post-list">
-                {this.getPosts(posts)}
-            </div>
-        )
-    }
-
-    getPosts = (posts) => {
+const PostList = ({posts}) => {
+    let getPosts = (posts) => {
         if(posts){
             return (
                 posts && posts.map((post) => (
@@ -24,6 +14,17 @@ class PostList extends Component {
             )
         }
     }
+
+    return (
+        <div className="container post-list">
+            {getPosts(posts)}
+        </div>
+    )
+
 }
 
-export default withRouter(connect(null, null)(PostList));
+PostList.PropTypes = {
+    posts: PropTypes.array.isRequired
+}
+
+export default PostList
