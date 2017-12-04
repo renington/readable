@@ -9,6 +9,16 @@ This project was made as a part of the [React Developer Udacity Nanodegree](http
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - Git
 - VSCode (Visual Studio Code)
+### Libs
+- [axios](https://www.npmjs.com/package/axios)
+- [react-redux](https://www.npmjs.com/package/react-redux)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [react-thunk](https://www.npmjs.com/package/react-thunk)
+- [react-timeago](https://www.npmjs.com/package/react-timeago)
+- [redux](https://www.npmjs.com/package/redux)
+- [redux-logger](https://www.npmjs.com/package/redux-logger)
+- [redux-thunk](https://www.npmjs.com/package/redux-thunk)
+- [uuid](https://www.npmjs.com/package/uuid)
 
 ## Installing dependencies
 ```bash
