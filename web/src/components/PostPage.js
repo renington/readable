@@ -15,23 +15,28 @@ class PostPage extends Component {
     }
     
     render() {
+        const { post } = this.props;
+        
         return (
             <div className="App">
                 <Header />
-                {this.postItem(this.props.post)}
+                {this.postItem(post)}
             </div>
         )
     }
-
+    
     postItem(post){
-        if(post){
-            return (
-                <div className="container">
-                    <PostItem post={post} />
-                    <CommentList comments={SortBy(this.props.comments.filter(comment => comment.deleted !== true ))} dispatch={this.props.dispatch} />
-                    <NewComment parentId={post.id} />
-                </div>
-            ) 
+        if(post !== null && post !== undefined){
+            if(Object.keys(post).length > 0) {
+
+                return (
+                    <div className="container">
+                        <PostItem post={post} />
+                        <CommentList comments={SortBy(this.props.comments.filter(comment => comment.deleted !== true ))} dispatch={this.props.dispatch} />
+                        <NewComment parentId={post.id} />
+                    </div>
+                ) 
+            }
         }
     }
 }
